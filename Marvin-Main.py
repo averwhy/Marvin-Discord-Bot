@@ -9,7 +9,7 @@ version = 'v1.1'
 client = discord.Client()
 ts = time.gmtime()
 
-
+#The code in between these \/ hashtag lines are the classification detection code
 ###########################################################################################################################
 #BIG THANKS TO ALBERTO POLIJAK FOR THE FOLLOWING CODE
     # Number separator is character between SCP and a number, example with space:
@@ -76,6 +76,7 @@ async def on_message(message):
 #https://scp-wiki.net/scp-001
 ###########################################################################################################################
 #and then the rest of this code is mine
+#this \/ is the command code
 quotes = [
     "Sorry, did I say something wrong? Pardon me for breathing which I never do anyway so I don't know why I bother to say it.",
     "I would correct your grammar as well, but you wouldn't listen. No one ever does...",
