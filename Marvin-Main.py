@@ -12,8 +12,8 @@ ts = time.gmtime()
 #The code in between these \/ hashtag lines are the classification detection code
 ###########################################################################################################################
 #BIG THANKS TO ALBERTO POLIJAK FOR THE FOLLOWING CODE
-    # Number separator is character between SCP and a number, example with space:
-    # SCP 1
+    # Number separator is character between SCP and a number, example with hyphen:
+    # SCP-1
 NUMBER_SEPARATOR = "-"
 MAXIMUM_SCP_NUMBER = 4999
 def get_scp_link(message_content):
