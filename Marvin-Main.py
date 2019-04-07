@@ -19,27 +19,36 @@ quotes = [
 @client.event
 async def on_message(message):
     # We don't want the bot to reply to itself
+    if "SCP" in message.content:
+        if message.author == client.user:
+            return
+        elif message.author.bot:
+             return
+        else:
+            scp_link = get_scp_link(message.content)
+            if scp_link is not None:
+                await client.send_message(message.channel, scp_link)
     if message.author == client.user:
         return
     #or other bots
-    if message.author.bot:
+    elif message.author.bot:
         return
-    if message.content.startswith('m|bot'):
+    elif message.content.startswith('m|bot'):
         msg = "Hi, I'm Marvin. I'm a bot that originated on r/scp and other SCP subreddits. I reply to people when i detect an SCP classification, such as SCP-280. I may not always be right."
         await client.send_message(message.channel, msg)
         print("[",time.strftime("%Y-%m-%d %H:%M:%S",ts),"]Someone used about.")
         
-    if message.content.startswith('m|quote'):
+    elif message.content.startswith('m|quote'):
         msg = "I wish i could tell you a quote, but my developer is so bad at what he does i can't."
         await client.send_message(message.channel, msg)
         print("[",time.strftime("%Y-%m-%d %H:%M:%S",ts),"]Someone used quote.")
 
-    if message.content.startswith('m|getinvite'):
+    elif message.content.startswith('m|getinvite'):
         msg = '{0.author.mention}, the invite code is https://discord.gg/WQJ7hRF'.format(message)
         await client.send_message(message.channel, msg)
         print("[",time.strftime("%Y-%m-%d %H:%M:%S",ts),"]Someone used getinvite.")
         
-    if message.content.startswith('m|howto'):
+    elif message.content.startswith('m|howto'):
         embed = discord.Embed(title="**How to use Marvin**", description="How Marvin will find any SCP for you", colour=discord.Colour(0x7a19fd))
         embed.set_author(name="Marvin")
         embed.set_footer(text="Marvin v1.1")
@@ -48,12 +57,12 @@ async def on_message(message):
         await client.send_message(message.channel, embed=embed)
         print("[",time.strftime("%Y-%m-%d %H:%M:%S",ts),"]Someone used howto.")
 
-    if message.content.startswith('m|scp'):
+    elif message.content.startswith('m|scp'):
         msg = 'The SCP Foundation is a secret organization entrusted by governments around the globe to contain and study anomalous individuals, entities, locations, objects, and phenomena operating outside the bounds of natural law. _Note: It is all entirely fictional. Any events that occur are purely coincidental._'
         await client.send_message(message.channel, msg)
         print("[",time.strftime("%Y-%m-%d %H:%M:%S",ts),"]Someone used about scp.")
     
-    if message.content.startswith('m|cmds'):
+    elif message.content.startswith('m|cmds'):
             embed = discord.Embed(title="**List of commands**", description="List of commands to use.", colour=discord.Colour(0x7a19fd))
             embed.set_author(name="Marvin")
             embed.set_footer(text="Marvin v1.1")
@@ -124,12 +133,7 @@ def _build_scp_url(formatted_scp_number):
     base_url = "http://www.scp-wiki.net/scp-"
     prefix = "SCP-" + formatted_scp_number + ": "
     return prefix + base_url + formatted_scp_number
-@client.event
-async def on_message(message):
-    if "SCP" in message.content:
-        scp_link = get_scp_link(message.content)
-        if scp_link is not None:
-            await client.send_message(message.channel, scp_link)
+
 #https://scp-wiki.net/scp-001
 ###########################################################################################################################
 #and then the rest of this code is mine
