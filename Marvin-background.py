@@ -5,22 +5,23 @@ client = discord.Client()
 
 async def my_background_task():
     await client.wait_until_ready()
+    #await client.change_presence(status=discord.Status.dnd)  # Online, idle, invisible, dnd
     while True:
-        #await client.change_presence(game=discord.Game(name='with m|cmds'))
-        #await asyncio.sleep(10)
-        await client.change_presence(game=discord.Game(name='with SCP-999'))
+        await client.change_presence(activity=discord.Game(name="with my developer"))
         await asyncio.sleep(10)
-        await client.change_presence(game=discord.Game(name='with my devloper'))
+        await client.change_presence(activity=discord.Game(name='SCP: Containment Breach'))
         await asyncio.sleep(10)
-        await client.change_presence(game=discord.Game(name='SCP Containment Breach'))
+        await client.change_presence(activity=discord.Game(name='with m-cmds'))
         await asyncio.sleep(10)
-        await client.change_presence(game=discord.Game(name='with m|cmds'))
+        await client.change_presence(activity=discord.Game(name='[REDACTED]'))
         await asyncio.sleep(10)
-        await client.change_presence(game=discord.Game(name='[REDACTED]'))
+        await client.change_presence(activity=discord.Game(name='with m-howto'))
         await asyncio.sleep(10)
-        await client.change_presence(game=discord.Game(name='with m|howto'))
+        await client.change_presence(activity=discord.Game(name='with SCP-999'))
         await asyncio.sleep(10)
-        
+        await client.change_presence(activity=discord.Game(name='discord.py rewrite'))
+        await asyncio.sleep(10)
+    
 @client.event
 async def on_ready():
     print('-----------------------------------------------------')
